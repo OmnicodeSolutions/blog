@@ -12,7 +12,7 @@ newer = "Anterior"
 older = "Próximo"
 
 # Header translations
-search = "Procurar arquivo..."
+search = "Procurar no blog..."
 
 # Home translations
 read_blog_in = "Leia o blog em"

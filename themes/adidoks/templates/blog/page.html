@@ -4,7 +4,7 @@
 
 {% block seo %}
   {# This value is matched by the config.extra.menu.main->section #}
-  {% set_global current_section = [ "blog", page.title ] | join(sep="/") %}
+  {% set_global current_section = [ "posts", page.title ] | join(sep="/") %}
   {{ super() }}
 {% endblock seo %}
 
