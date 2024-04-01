@@ -6,10 +6,10 @@ debug=$3
 
 # TODO: validate if $today is a valid date in YYYY-MM-DD
 
-new_file=content/blog/${today}.md
+new_file=content/posts/${today}.md
 cp daily-template.md ${new_file}.temp
 
-new_file_pt_br=content/blog/${today}.pt.md
+new_file_pt_br=content/posts/${today}.pt.md
 cp template-diario.md ${new_file_pt_br}.temp
 
 ## Title
