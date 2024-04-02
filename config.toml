@@ -59,7 +59,7 @@ theme_color = "#fff"
 
 # More about site's title
 title_separator = "|"  # set as |, -, _, etc
-title_addition = "Modern Documentation Theme"
+title_addition = "Omnicode Worklog - This is how we work"
 
 
 # Set date format in blog publish metadata
