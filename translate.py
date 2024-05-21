@@ -1,10 +1,12 @@
+import sys
+
 from openai import OpenAI
 from dotenv import load_dotenv
 
+text = open(f'content/posts/{sys.argv[1]}.md').read()
+
 load_dotenv()
 client = OpenAI()
-
-text = open(f'content/posts/2024-04-16.md').read()
 
 response = client.chat.completions.create(
   model="gpt-4",
