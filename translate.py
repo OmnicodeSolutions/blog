@@ -2,8 +2,13 @@ import sys
 
 from openai import OpenAI
 from dotenv import load_dotenv
+from datetime import datetime
 
-text = open(f'content/posts/{sys.argv[1]}.md').read()
+if len(sys.argv) > 1:
+  text = open(f'content/posts/{sys.argv[1]}.md').read()
+else:
+  date = datetime.today().strftime('%Y-%m-%d')
+  text = open(f'content/posts/{date}.md').read()
 
 load_dotenv()
 client = OpenAI()
