@@ -10,7 +10,7 @@ else:
   date = datetime.today().strftime('%Y-%m-%d')
   path = f'content/posts/{date}.md'
 
-text = open(path, 'r+').read()
+text = open(path, 'r+')
 
 load_dotenv()
 client = OpenAI()
@@ -24,7 +24,7 @@ response = client.chat.completions.create(
     },
     {
       "role": "user",
-      "content": text
+      "content": text.read()
     }
   ],
   temperature=0.7,
@@ -32,4 +32,6 @@ response = client.chat.completions.create(
   top_p=1
 )
 
-# print(response.choices[0].message.content)
+text.close()
+
+print(response.choices[0].message.content)
