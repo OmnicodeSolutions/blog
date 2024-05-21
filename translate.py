@@ -5,10 +5,12 @@ from dotenv import load_dotenv
 from datetime import datetime
 
 if len(sys.argv) > 1:
-  text = open(f'content/posts/{sys.argv[1]}.md').read()
+  path = f'content/posts/{sys.argv[1]}.md'
 else:
   date = datetime.today().strftime('%Y-%m-%d')
-  text = open(f'content/posts/{date}.md').read()
+  path = f'content/posts/{date}.md'
+
+text = open(path, 'r+').read()
 
 load_dotenv()
 client = OpenAI()
