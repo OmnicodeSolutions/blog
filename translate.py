@@ -18,7 +18,7 @@ load_dotenv()
 client = OpenAI()
 
 response = client.chat.completions.create(
-  model="gpt-4",
+  model="gpt-4o",
   messages=[
     {
       "role": "system",
@@ -30,7 +30,7 @@ response = client.chat.completions.create(
     }
   ],
   temperature=0.7,
-  max_tokens=7000,
+  max_tokens=3000,
   top_p=1
 )
 
