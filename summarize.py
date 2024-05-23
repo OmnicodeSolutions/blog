@@ -4,8 +4,13 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 import dotenv
+import os
 
 dotenv.load_dotenv()
+
+folder_path = "content/posts"
+files = os.listdir(folder_path)
+en_files = [file for file in files if '.pt' not in file and '_index' not in file]
 
 markdown_path = "content/posts/2024-04-16.md"
 loader = UnstructuredMarkdownLoader(markdown_path)
