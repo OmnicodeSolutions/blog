@@ -5,15 +5,19 @@ from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 import dotenv
 import os
+import chromadb
 
 dotenv.load_dotenv()
+
+client = chromadb.Client()
+collection = client.create_collection("en_posts")
+documents = []
+metadatas = []
+ids = []
 
 folder_path = "content/posts"
 files = os.listdir(folder_path)
 en_files = [file for file in files if '.pt' not in file and '_index' not in file]
-
-markdown_path = "content/posts/2024-04-16.md"
-loader = UnstructuredMarkdownLoader(markdown_path)
 
 # Define prompt
 prompt_template = """Write a concise summary of the following:
@@ -25,9 +29,19 @@ prompt = PromptTemplate.from_template(prompt_template)
 llm = ChatOpenAI(temperature=0, model_name="gpt-4o")
 llm_chain = LLMChain(llm=llm, prompt=prompt)
 
-docs = loader.load()
-content = docs[0].page_content
+for file in en_files:
+    markdown_path = f"content/posts/{file}"
+    loader = UnstructuredMarkdownLoader(markdown_path)
 
-print(llm_chain.run(content))
+    docs = loader.load()
+    content = docs[0].page_content
 
+    documents.append(content)
+    metadatas.append({"source": folder_path})
+    ids.append(file)
 
+collection.add(
+    documents=documents,
+    metadatas=metadatas,
+    ids=ids,
+)
