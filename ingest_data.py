@@ -1,9 +1,4 @@
-from langchain.chains.combine_documents.stuff import StuffDocumentsChain
-from langchain.chains.llm import LLMChain
-from langchain_core.prompts import PromptTemplate
-from langchain_openai import ChatOpenAI
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
-from langchain_chroma import Chroma
 import dotenv
 import os
 import chromadb
