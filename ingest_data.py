@@ -15,7 +15,7 @@ folder_path = "content/posts/"
 files = os.listdir(folder_path)
 en_files = [file for file in files if '.pt' not in file and '_index' not in file]
 
-for file in en_files[:6]:
+for file in en_files:
     markdown_path = f"{folder_path}{file}"
     loader = UnstructuredMarkdownLoader(markdown_path)
 
