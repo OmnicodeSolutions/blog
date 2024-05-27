@@ -13,7 +13,7 @@ ids = []
 
 folder_path = "content/posts/"
 files = os.listdir(folder_path)
-en_files = [file for file in files if '.pt' not in file and '_index' not in file]
+en_files = [file for file in files if ('.pt' not in file) and ('_index' not in file) and ('2023' or '2024-01' or '2024-02' or '2024-03-01' in file)]
 
 for file in en_files:
     markdown_path = f"{folder_path}{file}"
