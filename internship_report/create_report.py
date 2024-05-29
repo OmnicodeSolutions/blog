@@ -46,8 +46,8 @@ def split_array(array, size):
 def main():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--folder_path", default="content/posts/")
-    parser.add_argument("--date_limit")
+    parser.add_argument("--folder_path", default="../content/posts/")
+    parser.add_argument("--date_limit", default=datetime.date.today())
 
     args = parser.parse_args()
 
