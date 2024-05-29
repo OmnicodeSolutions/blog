@@ -23,16 +23,14 @@ def create_report_from_blog():
     response = llm_chain.run(blog_posts)
     return response
 
-def create_report_from_reports():
+def create_report_from_reports(reports):
     _template = """Given the following reports from an internship program, create a general report with three main sections: activities executed, methodologies applied and conclusion.
 
     Reports:
     {reports}
     General report:"""
     prompt = PromptTemplate.from_template(_template)
-
-    with open("reports.pkl", "r") as f:
-        vectorstore = f.read()
+    vectorstore = reports
 
     llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
     llm_chain = LLMChain(llm=llm, prompt=prompt)
