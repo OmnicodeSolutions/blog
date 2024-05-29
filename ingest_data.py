@@ -7,6 +7,8 @@ dotenv.load_dotenv()
 
 def create_collection(folder_path, en_files):
     client = chromadb.Client()
+    if client.count_collections() > 0:
+        client.delete_collection("en_posts")
     collection = client.create_collection("en_posts")
     documents = []
     metadatas = []
