@@ -5,6 +5,7 @@ from math import ceil
 from dateutil.relativedelta import relativedelta
 from ingest_data import create_collection
 from query_data import create_report_from_blog, create_report_from_reports, save_report
+from translate_report import translate_report
 
 START_DATE = datetime.date(2023, 3, 1) # first ever blog entry date
 
@@ -65,6 +66,7 @@ def main():
         report = create_report_from_reports(trimester_reports)
     
     save_report(report)
+    translate_report()
 
 if __name__ == "__main__":
     main()
